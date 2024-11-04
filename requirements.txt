@@ -1,0 +1,7 @@
+Flask==2.3.3
+Flask-Session==0.4.0
+apscheduler==3.8.1
+python-dotenv==1.0.1
+pyqrcode==1.2.1
+pypng==0.0.20
+gunicorn==20.1.0
