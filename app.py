@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'Combustex_posto'
 
-USUARIOS_FILE = 'usuarios.pkl'
+USUARIOS_FILE = 'usuarios.pkl' 
 
 def load_usuarios():
     if os.path.exists(USUARIOS_FILE):
