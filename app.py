@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 from combustiveis.gasolina_adtivada import GasolinaAditivada
 import pyqrcode
 import pickle
@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'Combustex_posto'
 
-USUARIOS_FILE = 'usuarios.pkl' 
+USUARIOS_FILE = 'usuarios.pkl'
 
 def load_usuarios():
     if os.path.exists(USUARIOS_FILE):
@@ -128,7 +128,7 @@ def logout():
 
 @app.route('/ads.txt')
 def serve_ads_txt():
-    return render_template('static', 'ads.txt')
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'ads.txt')
 
 if __name__ == '__main__':
     app.run(debug=True)
