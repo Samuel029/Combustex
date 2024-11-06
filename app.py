@@ -126,5 +126,9 @@ def logout():
     session.pop('usuario', None)
     return render_template('logout.html')
 
+@app.route('/ads.txt')
+def serve_ads_txt():
+    return render_template('static', 'ads.txt')
+
 if __name__ == '__main__':
     app.run(debug=True)
