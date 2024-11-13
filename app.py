@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 from combustiveis.gasolina_adtivada import GasolinaAditivada
 import pyqrcode
 import pickle
@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'Combustex_posto'
 
-USUARIOS_FILE = 'usuarios.pkl' 
+USUARIOS_FILE = 'usuarios.pkl'
 
 def load_usuarios():
     if os.path.exists(USUARIOS_FILE):
