@@ -1,3 +1,4 @@
+/* Estilos principais */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,6 +12,7 @@ body {
     to { opacity: 1; }
 }
 
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -27,6 +29,7 @@ header {
     to { transform: translateY(0); }
 }
 
+/* Logo */
 .logo img {
     height: 50px;
     margin-right: 10px;
@@ -39,6 +42,7 @@ header {
     text-shadow: 1px 1px 2px #000000;
 }
 
+/* Nav links */
 nav a {
     color: #cdd7e2;
     margin-left: 1rem;
@@ -59,6 +63,7 @@ nav a:hover {
     transform: scale(1.1);
 }
 
+/* Hero section */
 .hero {
     display: flex;
     align-items: center;
@@ -112,6 +117,7 @@ nav a:hover {
     color: #cdd7e2;
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 1rem;
@@ -141,6 +147,7 @@ footer p {
     to { transform: translateY(0); opacity: 1; }
 }
 
+/* Media queries */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -204,4 +211,87 @@ footer p {
     .hero-text p {
         font-size: 0.9rem;
     }
+}
+
+/* Cookie consent styles */
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+.cookie-consent p {
+    margin: 0;
+    padding: 0;
+}
+
+.cookie-consent button {
+    background-color: #007bff; /* Azul */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.cookie-consent button:hover {
+    background-color: #0056b3; /* Azul escuro */
+}
+
+.cookie-consent button.decline {
+    background-color: #dc3545; /* Vermelho */
+}
+
+.cookie-consent button.decline:hover {
+    background-color: #c82333; /* Vermelho escuro */
+}
+
+.cookie-consent a {
+    color: #ffa500;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.cookie-consent a:hover {
+    color: #ffd700;
+}
+
+/* Termo completo modal */
+#termo-completo {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    max-width: 600px;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    max-height: 80%;
+    z-index: 1001;
+}
+
+#termo-completo h3 {
+    margin-top: 0;
+}
+
+#termo-completo ul {
+    padding-left: 20px;
+}
+
+#termo-completo ul li {
+    list-style-type: disc;
+    margin-bottom: 8px;
 }

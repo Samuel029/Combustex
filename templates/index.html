@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial - Combustex Posto</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <meta name="google-adsense-account" content="ca-pub-3809749496544897">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo-img">
             <h1>Posto Combustex</h1>
         </div>
         <nav>
-            <a href="{{ url_for('login') }}">Login</a>
-            <a href="{{ url_for('cadastro') }}">Cadastrar</a>
+            <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+            <a href="{{ url_for('cadastro') }}" class="nav-link">Cadastrar</a>
         </nav>
     </header>
 
@@ -32,5 +31,58 @@
     <footer>
         <p>&copy; 2024 Combustex Posto. Todos os direitos reservados.</p>
     </footer>
+
+    <div class="cookie-consent" id="cookieConsent" style="display: none;">
+        <p><strong>Termo de Consentimento para Tratamento de Dados Pessoais</strong></p>
+        <p>
+            Através deste documento, o <strong>Combustex</strong> informa e solicita seu consentimento para o tratamento de dados pessoais necessários para o funcionamento do sistema, conforme a Lei Geral de Proteção de Dados Pessoais (LGPD) – Lei n.º 13.709/2018.
+            <a href="#termo-completo" id="readMore">Leia mais...</a>
+        </p>
+        <button onclick="acceptCookies()">Aceitar</button>
+        <button onclick="declineCookies()">Recusar</button>
+    </div>
+
+    <div id="termo-completo" style="display:none;">
+        <button id="closeTermo" style="float: right;">X</button>
+        <h3>Termo de Consentimento para Tratamento de Dados Pessoais</h3>
+        <p>O sistema <strong>Combustex</strong> poderá coletar e armazenar os seguintes dados pessoais:</p>
+        <ul>
+            <li>Nome de usuário</li>
+            <li>Senhas</li>
+            <li>Outros dados pertinentes ao uso do sistema e que sejam necessários para o atendimento e prestação de serviços.</li>
+        </ul>
+        <p><strong>Finalidade do Tratamento de Dados</strong></p>
+        <p>Os dados coletados serão utilizados para identificação e autenticação do usuário, registro e acompanhamento de transações e serviços, e cumprimento de obrigações legais e regulatórias.</p>
+        <p><strong>Compartilhamento de Dados</strong></p>
+        <p>Os dados pessoais poderão ser compartilhados com terceiros apenas quando necessário para a prestação dos serviços do <strong>Combustex</strong>, com o consentimento do usuário, ou para cumprimento de obrigações legais.</p>
+        <p><strong>Segurança e Armazenamento dos Dados</strong></p>
+        <p>O sistema <strong>Combustex</strong> adota medidas técnicas e administrativas de segurança para proteger seus dados pessoais contra acessos não autorizados.</p>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookieConsent').style.display = 'block';
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+
+        // Mostrar termo completo ao clicar em "Leia mais..."
+        document.getElementById('readMore').addEventListener('click', function() {
+            document.getElementById('termo-completo').style.display = 'block';
+        });
+
+        // Fechar termo completo ao clicar no "X"
+        document.getElementById('closeTermo').addEventListener('click', function() {
+            document.getElementById('termo-completo').style.display = 'none';
+        });
+    </script>
 </body>
 </html>
