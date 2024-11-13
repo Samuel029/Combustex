@@ -40,7 +40,6 @@
             <a href="#termo-completo" id="readMore">Leia mais...</a>
         </p>
         <button onclick="acceptCookies()">Aceitar</button>
-        <button onclick="declineCookies()">Recusar</button>
     </div>
 
     <div id="termo-completo" style="display:none;">
@@ -62,23 +61,12 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            if (localStorage.getItem('cookieConsent') === 'accepted' || localStorage.getItem('cookieConsent') === 'declined') {
-                document.getElementById('cookieConsent').style.display = 'none';  // Esconde o banner se a escolha foi feita
-            } else {
-                document.getElementById('cookieConsent').style.display = 'block';  // Exibe o banner se não foi respondido
-            }
+            document.getElementById('cookieConsent').style.display = 'block';
         });
 
         function acceptCookies() {
             document.getElementById('cookieConsent').style.display = 'none';
             alert('Você aceitou o tratamento de dados pessoais.');
-            localStorage.setItem('cookieConsent', 'accepted');
-        }
-
-        function declineCookies() {
-            document.getElementById('cookieConsent').style.display = 'none';
-            alert('Você recusou o tratamento de dados pessoais.');
-            localStorage.setItem('cookieConsent', 'declined');
         }
 
         document.getElementById('readMore').addEventListener('click', function() {
