@@ -33,7 +33,7 @@
         <p>&copy; 2024 Combustex Posto. Todos os direitos reservados.</p>
     </footer>
 
-    <div class="cookie-consent" id="cookieConsent" style="display: none;">
+    <div class="cookie-consent" id="cookieConsent">
         <p><strong>Termo de Consentimento para Tratamento de Dados Pessoais</strong></p>
         <p>
             Através deste documento, o <strong>Combustex</strong> informa e solicita seu consentimento para o tratamento de dados pessoais necessários para o funcionamento do sistema, conforme a Lei Geral de Proteção de Dados Pessoais (LGPD) – Lei n.º 13.709/2018.
@@ -61,26 +61,30 @@
     </div>
 
     <script>
-        if (!localStorage.getItem('cookieConsent')) {
-            document.getElementById('cookieConsent').style.display = 'block';
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem('cookieConsent') === 'accepted' || localStorage.getItem('cookieConsent') === 'declined') {
+                document.getElementById('cookieConsent').style.display = 'none';  // Esconde o banner se a escolha foi feita
+            } else {
+                document.getElementById('cookieConsent').style.display = 'block';  // Exibe o banner se não foi respondido
+            }
+        });
 
         function acceptCookies() {
-            localStorage.setItem('cookieConsent', 'accepted');
             document.getElementById('cookieConsent').style.display = 'none';
+            alert('Você aceitou o tratamento de dados pessoais.');
+            localStorage.setItem('cookieConsent', 'accepted');
         }
 
         function declineCookies() {
-            localStorage.setItem('cookieConsent', 'declined');
             document.getElementById('cookieConsent').style.display = 'none';
+            alert('Você recusou o tratamento de dados pessoais.');
+            localStorage.setItem('cookieConsent', 'declined');
         }
 
-        // Mostrar termo completo ao clicar em "Leia mais..."
         document.getElementById('readMore').addEventListener('click', function() {
             document.getElementById('termo-completo').style.display = 'block';
         });
 
-        // Fechar termo completo ao clicar no "X"
         document.getElementById('closeTermo').addEventListener('click', function() {
             document.getElementById('termo-completo').style.display = 'none';
         });
