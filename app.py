@@ -3,7 +3,7 @@ from combustiveis.gasolina_adtivada import GasolinaAditivada
 import pyqrcode
 import pickle
 import os
-#app usuario
+
 app = Flask(__name__)
 app.secret_key = 'Combustex_posto'
 
