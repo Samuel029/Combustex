@@ -116,10 +116,10 @@ def abastecer():
     valor_a_pagar = quantidade * preco_por_litro[combustivel] if tipo == 'litros' else quantidade
     qr_code_data = f"Pagamento de R$ {valor_a_pagar:.2f} para {combustivel}\n19983824281"
     qr_code = pyqrcode.create(qr_code_data)
-    qr_code_file = f"static/qrcodes/qrcode_{session['usuario']}.png"
+    qr_code_file = f"static/qrcodes/qrcode.png"
     qr_code.png(qr_code_file, scale=6)
 
-    return render_template('resultado.html', resultado=resultado, qr_code_file=f'qrcodes/qrcode_{session["usuario"]}.png')
+    return render_template('resultado.html', resultado=resultado, qr_code_file=f'qrcodes/qrcode.png')
 
 @app.route('/logout')
 def logout():
