@@ -115,9 +115,18 @@ button:hover {
 .qr-code {
     display: block;
     margin: 20px auto;
+    max-width: 100%;
+    width: auto;
     animation: fadeIn 1s ease-in;
     transition: transform 0.2s;
 }
+
+@media (max-width: 600px) {
+    .qr-code {
+        width: 90%;
+    }
+}
+
 
 .qr-code:hover {
     transform: scale(1.01);
