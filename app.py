@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, session
 from combustiveis.gasolina_adtivada import GasolinaAditivada
 import pyqrcode
 import pickle
 import os
+import uuid
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'Combustex_posto'
@@ -18,6 +20,25 @@ def load_usuarios():
 def save_usuarios(usuarios):
     with open(USUARIOS_FILE, 'wb') as file:
         pickle.dump(usuarios, file)
+
+class QRCodeGenerator:
+    @staticmethod
+    def generate_qr_code(data, directory="static/qrcodes"):
+        try:
+            os.makedirs(directory, exist_ok=True)
+            unique_id = str(uuid.uuid4())
+            file_path = os.path.join(directory, f"qrcode_{unique_id}.png")
+            qr_code = pyqrcode.create(data)
+            qr_code.png(file_path, scale=6)
+
+            if os.path.exists(file_path):
+                return f"qrcodes/qrcode_{unique_id}.png"
+            else:
+                print("Erro: QR code não foi gerado.")
+                return None
+        except Exception as e:
+            print(f"Erro ao gerar QR code: {e}")
+            return None
 
 usuarios = load_usuarios()
 gasolina_aditivada = GasolinaAditivada()
@@ -43,7 +64,7 @@ def login():
         senha = request.form.get('senha')
 
         if usuarios.get(usuario) == senha:
-            session['usuario'] = usuario 
+            session['usuario'] = usuario
             return redirect(url_for('menucombustivel'))
         else:
             return render_template('login.html', erro="Credenciais inválidas. Tente novamente.")
@@ -113,13 +134,22 @@ def abastecer():
     else:
         resultado = "Tipo de abastecimento inválido."
 
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     valor_a_pagar = quantidade * preco_por_litro[combustivel] if tipo == 'litros' else quantidade
-    qr_code_data = f"Pagamento de R$ {valor_a_pagar:.2f} para {combustivel}\n19983824281"
-    qr_code = pyqrcode.create(qr_code_data)
-    qr_code_file = f"static/qrcodes/qrcode.png"
-    qr_code.png(qr_code_file, scale=6)
+    qr_code_data = (
+        f"ID: {str(uuid.uuid4())}\n"
+        f"Data: {timestamp}\n"
+        f"Pagamento de R$ {valor_a_pagar:.2f} para {combustivel}\n"
+        f"Cliente: {session['usuario']}\n"
+        "Chave para pagamento: 19983824281"
+    )
 
-    return render_template('resultado.html', resultado=resultado, qr_code_file=f'qrcodes/qrcode.png')
+    qr_code_file = QRCodeGenerator.generate_qr_code(qr_code_data)
+
+    if qr_code_file is None:
+        return render_template('menucombustivel.html', resultado="Erro ao gerar QR code. Tente novamente.")
+
+    return render_template('resultado.html', resultado=resultado, qr_code_file=qr_code_file)
 
 @app.route('/logout')
 def logout():
