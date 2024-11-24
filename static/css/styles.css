@@ -186,17 +186,6 @@ footer p {
     .hero-text p {
         font-size: 1rem;
     }
-
-    /* Ajustes para a barra de cookies */
-    .cookie-consent {
-        font-size: 12px;
-        padding: 15px;
-    }
-
-    .cookie-consent button {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
 }
 
 /* Para dispositivos com largura máxima de 480px */
@@ -216,23 +205,9 @@ footer p {
     .hero-text p {
         font-size: 0.9rem;
     }
-
-    /* Ajustes para a barra de cookies */
-    .cookie-consent {
-        font-size: 11px;
-        padding: 12px;
-    }
-
-    .cookie-consent button {
-        padding: 8px 12px;
-        font-size: 11px;
-    }
-
-    .cookie-consent a {
-        font-size: 12px;
-    }
 }
 
+/* Barra de cookies */
 .cookie-consent {
     position: fixed;
     bottom: 0;
@@ -282,6 +257,7 @@ footer p {
     color: #ffd700;
 }
 
+/* Modal do termo completo */
 #termo-completo {
     display: none;
     position: fixed;
@@ -311,4 +287,53 @@ footer p {
 #termo-completo ul li {
     list-style-type: disc;
     margin-bottom: 8px;
+}
+
+/* Responsividade para a barra de cookies */
+@media (max-width: 768px) {
+    .cookie-consent {
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    .cookie-consent button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .cookie-consent a {
+        font-size: 12px;
+    }
+
+    #termo-completo {
+        width: 95%;
+        max-width: 500px;
+        top: 15%;
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cookie-consent {
+        font-size: 11px;
+        padding: 12px;
+    }
+
+    .cookie-consent button {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    .cookie-consent a {
+        font-size: 11px;
+    }
+
+    #termo-completo {
+        width: 90%;
+        max-width: 400px;
+        top: 10%;
+        padding: 10px;
+        font-size: 12px;
+    }
 }

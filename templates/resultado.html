@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado do Abastecimento</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resultado.css') }}">
-    
 </head>
 <body>
     <header>
@@ -22,8 +21,9 @@
         <div class="resultado">
             <p>Chave: 19983824281</p>
         </div>
-        <div class="qr-code">
-            <img src="{{ url_for('static', filename=qr_code_file) }}" alt="QR Code" />
+        <h2>Qr Code</h2>
+        <div class="qr-container">
+            <img src="{{ url_for('static', filename=qr_code_file) }}" alt="QR Code" class="qr-code">
         </div>
         <h2>Copia e Cola</h2>
         <input type="text" value="19983824281" id="pixKey" readonly>

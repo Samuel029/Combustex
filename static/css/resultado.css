@@ -112,25 +112,51 @@ button:hover {
     transform: scale(1.01);
 }
 
-.qr-code {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    width: auto;
+h2 {
+    font-size: 1.5em;
+    color: #0056b3;
+    margin-top: 20px;
+    text-shadow: 0 0 3px #0056b3;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.qr-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #0056b3;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
     animation: fadeIn 1s ease-in;
+}
+
+.qr-code {
+    max-width: 80%;
+    height: auto;
     transition: transform 0.2s;
+    border: 2px solid #0056b3;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
 }
-
-@media (max-width: 600px) {
-    .qr-code {
-        width: 90%;
-    }
-}
-
 
 .qr-code:hover {
     transform: scale(1.01);
 }
+
+@media (max-width: 500px) {
+    .qr-container {
+        padding: 10px;
+    }
+
+    .qr-code {
+        max-width: 100%;
+        padding: 5px;
+    }
+}
+
 
 @keyframes fadeIn {
     from { opacity: 0; }
