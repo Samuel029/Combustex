@@ -188,7 +188,6 @@ footer p {
     }
 }
 
-/* Para dispositivos com largura máxima de 480px */
 @media (max-width: 480px) {
     header {
         padding: 1rem;
@@ -207,7 +206,6 @@ footer p {
     }
 }
 
-/* Barra de cookies */
 .cookie-consent {
     position: fixed;
     bottom: 0;
@@ -257,7 +255,6 @@ footer p {
     color: #ffd700;
 }
 
-/* Modal do termo completo */
 #termo-completo {
     display: none;
     position: fixed;
@@ -289,7 +286,6 @@ footer p {
     margin-bottom: 8px;
 }
 
-/* Responsividade para a barra de cookies */
 @media (max-width: 768px) {
     .cookie-consent {
         font-size: 12px;
