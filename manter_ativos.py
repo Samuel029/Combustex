@@ -3,7 +3,8 @@ import requests
 
 sites = [
     "https://conversorpdfeword.onrender.com/",
-    "https://combustex.onrender.com/"
+    "https://combustex.onrender.com/",
+    "https://conversorpdfexcel.onrender.com/"
 ]
 
 def manter_sites_ativos():
